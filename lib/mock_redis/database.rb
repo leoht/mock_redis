@@ -9,6 +9,7 @@ require 'mock_redis/sort_method'
 require 'mock_redis/indifferent_hash'
 require 'mock_redis/info_method'
 require 'mock_redis/utility_methods'
+require 'mock_redis/pub_sub_methods'
 
 class MockRedis
   class Database
@@ -20,8 +21,9 @@ class MockRedis
     include SortMethod
     include InfoMethod
     include UtilityMethods
+    include PubSubMethods
 
-    attr_reader :data, :expire_times
+    attr_reader :base, :data, :expire_times
 
     def initialize(base, *_args)
       @base = base
